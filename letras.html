@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Animação</title>
+<link rel="stylesheet" src="https://unpkg.com/splitting/dist/splitting.css" />
+</head>
+<style>
+@import url("https://fonts.googleapis.com/css?family=Oswald:700");
+html {
+  height: 100%;
+  display: flex;
+}
+
+body {
+  margin: auto;
+}
+
+html {
+  text-align: center;
+  background: #2A363B;
+  color: #FFF;
+}
+
+.text-overlap {
+  font-family: "Oswald", serif;
+  font-weight: 700;
+  font-size: 13vw;
+  text-transform: uppercase;
+}
+
+.text-overlap.splitting .char {
+  display: inline-block;
+  text-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+  position: relative;
+  animation: slide-in 2.5s cubic-bezier(0.61, 0.01, 0.17, 0.99) 0s both;
+  animation-delay: calc(1s + (0.5s * var(--distance-percent)));
+  margin-right: -0.12em;
+}
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(1em);
+    transform: translateX(calc(0.12em * var(--char-offset))) translateZ(0px);
+  }
+}
+@keyframes will-change {
+  0% {
+    will-change: transform;
+  }
+  100% {
+    will-change: auto;
+  }
+}
+.text-overlap.splitting b {
+  display: inline-block;
+  color: #CF4647;
+  animation-name: slide-in-v, will-change;
+  animation-fill-mode: both;
+  animation-delay: 1.5s;
+  animation-duration: 2s, 1s;
+  animation-timing-function: cubic-bezier(0, 0.6, 0, 1), linear;
+}
+@keyframes slide-in-v {
+  0% {
+    opacity: 0;
+    transform: translateX(1em);
+    transform: translateY(-50vh);
+  }
+}
+.text-overlap.splitting b ~ * .char {
+  z-index: calc(1 * (var(--char-total) - var(--char-index)));
+}
+
+</style>
+<body>
+    <section>
+    <div class="text-overlap" data-splitting>Kalunga <b> RED </b>Canids</div>
+    </section>
+
+    <div class="container">
+        <div>
+            <div class="col" id="1"></div>
+            <div class="col"></div>
+        </div>
+        <div>
+            <div class="col" id="2"></div>
+            <div class="col"></div>
+        </div>
+    </div>
+    
+    <script>
+        const results = Splitting({
+            target: '.container',
+            by: 'cols',
+            matching: '.col'
+        });
+
+        results[0].cols[0][0] // <div id="1" style="--col-index: 0">...</div>
+        results[0].cols[1][0] // <div style="--col-index: 1">...</div>
+
+        results[0].cols[0][1] // <div id="2" style="--col-index: 0">...</div>
+        results[0].cols[1][1] // <div style=" --col-index: 1">...</div>
+    </script>
+
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+    <script>
+        console.clear();
+
+            Splitting();
+
+    </script>
+
+</body>
+</html>
