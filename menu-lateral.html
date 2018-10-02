@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    body {
+  background-color: #020a1b;
+}
+
+a {
+  color: #fff;
+  font-family: tahoma;
+}
+
+.leftmenu {
+  position: fixed;
+  top: calc(50% - 130px);
+  left: 0;
+  z-index: 9;
+}
+.leftmenu__item {
+  max-width: 56px;
+  max-height: 56px;
+  height: 56px;
+  margin: 3px 0;
+  display: block;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  transition: all 0.4s ease-in-out;
+}
+.leftmenu__item span {
+  display: inline-block;
+}
+.leftmenu__item span.title {
+  text-transform: uppercase;
+  color: #000;
+  font-size: 0.8092857143rem;
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: all 0.4s ease-in-out;
+}
+.leftmenu__item span.icon {
+  text-align: center;
+  width: 56px;
+  min-width: 56px;
+}
+.leftmenu__item:hover {
+  max-width: 100%;
+  min-width: 100%;
+}
+.leftmenu__item:hover span.title {
+  padding-left: 20px;
+  max-width: 100%;
+}
+</style>
+<body>
+    <aside class="leftmenu">
+        <nav>
+            <a class="leftmenu__item" target="_blank" href="">
+                <span class="title">Teste</span>
+                <span class="icon">
+                    <img src="https://imagensn.com/images/2016/08/05/icon-star-active.png" alt="">
+                </span>
+            </a>
+            <a class="leftmenu__item" target="_blank" href="">
+                <span class="title">test2</span>
+                <span class="icon">
+                    <img src="https://imagensn.com/images/2016/08/05/icon-star-active.png" alt="">
+                </span>
+            </a>
+            <a class="leftmenu__item" target="_blank" href="">
+                <span class="title">Teste3</span>
+                <span class="icon">
+                    <img src="https://imagensn.com/images/2016/08/05/icon-star-active.png" alt="">
+                </span>
+            </a>
+            <a class="leftmenu__item" target="_blank" href="">
+                <span class="title">teste4</span>
+                <span class="icon">
+                    <img src="https://imagensn.com/images/2016/08/05/icon-star-active.png" alt="">
+                </span>
+            </a>
+            <a class="leftmenu__item" target="_blank" href="">
+                <span class="title">teste5</span>
+                <span class="icon">
+                    <img src="https://imagensn.com/images/2016/08/05/icon-star-active.png" alt="">
+                </span>
+            </a>
+        </nav>
+    </aside>
+</body>
+</html>
